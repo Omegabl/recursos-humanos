@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+		<f:event type="preRenderView" listener="#{loginController.verificarSesion()}" ></f:event>
+    </h:head>
+    <h:body>
+        <h:outputLink value="registrar.xhtml">Registrar usuario</h:outputLink><br />
+        <h:outputLink value="consultar.xhtml">Consultar usuario</h:outputLink><br />
+        <h:outputLink value="cargar.xhtml">cargar archivos</h:outputLink><br />
+		<form>
+			<h:commandLink action="#{loginController.cerrarSesion()}" value="Cerrar sesión" />
+		</form>
+    </h:body>
+</html>
+

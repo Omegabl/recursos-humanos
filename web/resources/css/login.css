@@ -1,0 +1,108 @@
+/*
+The MIT License
+
+Copyright 2017 APRENDIZ.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+/* 
+    Created on : 25-feb-2017, 9:18:34
+    Author     : APRENDIZ
+*/
+
+/********************************************************************************
+Estilos generales
+********************************************************************************/
+*, *::before, *::after{
+	box-sizing: border-box;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	display: grid;
+	grid-template-columns: 416px calc(100% - 416px);
+	grid-template-rows: auto;
+	grid-template-areas: "main .";
+	height: 100vh;
+	background: #fff url(#{resource['/img/fondoLogin.png']}) no-repeat fixed left top / cover;
+}
+main{
+	grid-area: main;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 90px auto auto;
+	grid-template-areas: "titulo" "formulario" "creditos";
+	background: #FFF;
+}
+main h1{
+	grid-area: titulo;
+	text-align: center;
+}
+/**********************************************************************
+Formulario
+**********************************************************************/
+form{
+	grid-area: formulario;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(4, auto);
+	grid-template-areas: "usuario" "contrasena" "submit";
+	align-content: center;
+	padding: 0 40px;
+}
+form > div:nth-child(2){
+	grid-area: usuario;
+}
+form > div:nth-child(3){
+	grid-area: contrasena;
+}
+form > button[type="submit"]{
+	grid-area: submit;
+}
+.mdl-button.mdl-button--raised{
+	width: 100%;
+	margin: 16px 0;
+}
+.mdl-textfield__input[required] + .mdl-textfield__label::before, .mdl-selectfield__select[required] + .mdl-selectfield__label::before{
+	content: "(*) ";
+	color: #d50000;
+}
+main > div{
+	grid-area: creditos;
+	padding-bottom: 30px;
+	text-align: center;
+	align-self: end;
+}
+@media all and (max-width: 360px){
+	body{
+		grid-template-areas: "main main";
+	}
+	form{
+		padding: 0 10px;
+	}
+	form > div:nth-child(3) > *{
+		display: block;
+	}
+	form > div:nth-child(3) > a{
+		padding-top: 15px;
+		width: 100%;
+	}
+}
